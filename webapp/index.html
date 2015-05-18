@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>SF Bus Departure Times</title>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="js/googlemap.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-custom navbar-fixed-top">
+      <div class="navbar-header"><a class="navbar-brand" href="">SF Bus Departure Times</a>
+      </div>
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" class="showNearbyStops">Show Stops near Center</a></li>
+          <li><a href="#" class="locateToSF">Locate to SF</a></li>
+          <li><a href="#" class="geolocate">Where am I?</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="map-canvas"></div>
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <div class="col-xs-4" id="left">
+
+          <div class="info-panel">
+
+            <div id="routes-filter" class="panel panel-default">
+              <div class="panel-heading">
+                <input type="text" class="form-control search" placeholder="Routes Filter">
+              </div>
+              <ul id="route-list" class="list-group list-group-fixed-height list">
+              </ul>
+            </div>
+
+            <div class="panel panel-primary">
+              <div class="panel-heading" id="stop-title">Click Stop on Map to Show Departure Times</div>
+              <div id="aggregated-predictions-template" class="list-group"></div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xs-8"><!--map-canvas will be postioned here--></div>
+
+      </div>
+    </div>
+
+
+    <script type="text/template" id="route-template">
+      <input class="toggle" type="checkbox" <%= show ? 'checked' : '' %>>
+      <label class="route-title"><%- title %></label>
+    </script>
+    <script type="text/template" id="prediction-template">
+      <Strong><%= routeTitle %></Strong>
+      <% var directions = (direction instanceof Array) ? direction : [direction]; %>
+      <% _.each(directions, function(d) { %>
+      <% if (d.title === "") { %>
+           <div>No current prediction.</div>
+      <% } else { %>
+           <div><em><%= d.title %></em></div>
+      <%   var predictoins = (d.prediction instanceof Array) ? d.prediction : [d.prediction]; %>
+      <%   var times = []; %>
+      <%   _.each(predictoins, function (p) { %>
+      <%     times.push(p.minutes + ' min ' + (p.seconds - p.minutes * 60) + ' sec'); %>
+      <%   }, this); %>
+      <%   times = times.join(', '); %>
+           Arrives in: <strong><%= times %></strong>
+      <%   } %>
+      <% }, this); %>
+      </div>
+    </script>
+    <script src="js/config.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="node_modules/underscore/underscore.js"></script>
+    <script src="node_modules/backbone/backbone.js"></script>
+    <script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
+    <script src="js/models/stop.js"></script>
+    <script src="js/models/routeConfig.js"></script>
+    <script src="js/models/prediction.js"></script>
+    <script src="js/collections/nearbyStops.js"></script>
+    <script src="js/collections/routeConfigs.js"></script>
+    <script src="js/collections/aggregatedPredictions.js"></script>
+    <script src="js/views/routeView.js"></script>
+    <script src="js/views/predictionView.js"></script>
+    <script src="js/views/aggregatedPredictionsView.js"></script>
+    <script src="js/views/nearbyStopsView.js"></script>
+    <script src="js/views/appView.js"></script>
+    <script src="js/list.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

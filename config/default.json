@@ -1,0 +1,12 @@
+{
+  "server": {
+    "port": 8000,
+    "webappPath": "/webapp"
+  },
+  "mongodb": {
+    "url": "mongodb://localhost:27017/sfbus_db"
+  },
+  "remoteDataSource": {
+    "url": "http://webservices.nextbus.com/service/publicJSONFeed"
+  }
+}
