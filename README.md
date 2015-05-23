@@ -54,24 +54,6 @@ NextBus API, I provide some more for read optimization of my app:
 - `GET /api/busstops/:stopId` get a specific stop with a stopId
 - `GET /api/routes` get all routes info
 
-### MongoDB Schema Design
-
-There is no perfect software and we have to make trade-offs to fit into the right place.
-
-MongoDB Schema Design: Embed vs Reference
-
-Embed
-- Pros: good for read: data locality, atomicity and isolation.
-- Cons: potential redundancy and inconsistency.
-
-Reference
-- Pros: consistency, flexibility, good for high-arity relationships, many-to-many relationships.
-- Cons: slow read.
-
-Since our service is write-intensive (most internet services have a read/write ratio of 100:1 ~ 1000:1), I prefer using
-"embed" for each BusStop to embed duplicated info about routes which it belongs to, though we already have a Route schema.
-
-
 ## Setup, Run, and Test
 
     https://github.com/puncsky/SFBusDepartureTimes.Uber.git
