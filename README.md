@@ -2,10 +2,10 @@
 You can find stops nearby or query a specific route. See the routes and stops on the map and click to
 show real-time departure information.
 
-![SF Bus Departure Times screen shot](http://puncsky.cloudapp.net/screen-shot.png)
+![SF Bus Departure Times screen shot](https://raw.githubusercontent.com/puncsky/SFBusDepartureTimes/master/screen-shot.png)
 
 
-Live on Azure @ [SF Bus Departure Times](http://puncsky.cloudapp.net/)
+<del>Live on Azure @ [SF Bus Departure Times](http://puncsky.cloudapp.net/)</del>
 
 ## Features and Specs
 
@@ -56,8 +56,8 @@ NextBus API, I provide some more for read optimization of my app:
 
 ## Setup, Run, and Test
 
-    https://github.com/puncsky/SFBusDepartureTimes.Uber.git
-    cd SFBusDepartureTimes.Uber
+    https://github.com/puncsky/SFBusDepartureTimes.git
+    cd SFBusDepartureTimes
 
     npm install # install backend npm packages
     cd webapp
@@ -74,8 +74,5 @@ When the server is fully loaded (need to load MongoDB from NextBus API for few s
 
 ## Links
 
-- [Github Repo](https://github.com/puncsky/SFBusDepartureTimes.Uber)
-- [View the Demo Hosted @ Azure](http://puncsky.cloudapp.net/)
+- [Github Repo](https://github.com/puncsky/SFBusDepartureTimes)
 - [Linkedin](https://www.linkedin.com/pub/tian-pan/31/8/753)
-- [Resume](http://puncsky.cloudapp.net/resume.pdf)
-- [Download Source Code](https://github.com/puncsky/SFBusDepartureTimes.Uber/archive/master.zip)
